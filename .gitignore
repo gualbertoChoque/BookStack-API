@@ -1,0 +1,24 @@
+# PyCharm IDE
+.idea/
+
+# Directorios de caché de Python
+__pycache__/
+
+# Directorio de reportes
+reports/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+.env.*
+.pytest_cache/git init
+.cache/
+
+# Loggger
+api.log
+
+# Reports
+allure-results/
+allure-report/

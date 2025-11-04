@@ -1,0 +1,107 @@
+{
+    "type": "object",
+    "required": [
+        "books",
+        "cover",
+        "created_at",
+        "created_by",
+        "description",
+        "description_html",
+        "id",
+        "name",
+        "owned_by",
+        "slug",
+        "tags",
+        "updated_at",
+        "updated_by"
+    ],
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "name": {
+            "type": "string"
+        },
+        "slug": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "created_by": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "slug"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                }
+            }
+        },
+        "updated_by": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "slug"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                }
+            }
+        },
+        "created_at": {
+            "type": "string"
+        },
+        "updated_at": {
+            "type": "string"
+        },
+        "owned_by": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "slug"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                }
+            }
+        },
+        "description_html": {
+            "type": "string"
+        },
+        "tags": {
+            "type": "array"
+        },
+        "cover": {
+            "type": "null"
+        },
+        "books": {
+            "type": "array"
+        }
+    }
+}

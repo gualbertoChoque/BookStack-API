@@ -1,0 +1,95 @@
+{
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "id": { "type": "integer" },
+    "name": { "type": "string" },
+    "slug": { "type": "string" },
+    "description": { "type": "string" },
+    "created_by": {
+      "oneOf": [
+        { "type": "integer" },
+        {
+          "type": "object",
+          "properties": {
+            "id": { "type": "integer" },
+            "name": { "type": "string" },
+            "slug": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "updated_by": {
+      "oneOf": [
+        { "type": "integer" },
+        {
+          "type": "object",
+          "properties": {
+            "id": { "type": "integer" },
+            "name": { "type": "string" },
+            "slug": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" },
+    "owned_by": {
+      "oneOf": [
+        { "type": "integer" },
+        {
+          "type": "object",
+          "properties": {
+            "id": { "type": "integer" },
+            "name": { "type": "string" },
+            "slug": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "description_html": { "type": "string" },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "value": { "type": "string" },
+          "order": { "type": "integer" }
+        }
+      }
+    },
+    "cover": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "properties": {
+            "id": { "type": "integer" },
+            "name": { "type": "string" },
+            "url": { "type": "string" },
+            "created_at": { "type": "string" },
+            "updated_at": { "type": "string" },
+            "created_by": { "type": "integer" },
+            "updated_by": { "type": "integer" },
+            "path": { "type": "string" },
+            "type": { "type": "string" },
+            "uploaded_to": { "type": "integer" }
+          }
+        }
+      ]
+    },
+    "books": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  }
+}

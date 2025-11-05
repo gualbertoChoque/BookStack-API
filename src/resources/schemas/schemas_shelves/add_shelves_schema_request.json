@@ -1,15 +1,33 @@
 {
     "type": "object",
-    "required": [
-        "description_html",
-        "name"
-    ],
+    "required": ["name"],
     "properties": {
         "name": {
             "type": "string"
         },
         "description_html": {
-            "type": "string"
+            "type": ["string", "null"]
+        },
+        "books": {
+            "type": ["array", "null"],
+            "items": {
+                "type": "integer"
+            }
+        },
+        "tags": {
+            "type": ["array", "null"],
+            "items": {
+                "type": "object",
+                "required": ["name", "value"],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            }
         }
     }
 }

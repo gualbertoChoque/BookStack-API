@@ -21,6 +21,7 @@ class StaticDataShelvesPorId(Enum):
     valid_param_id = "99"
     invalid_no_exist_id = "9999999"
     invalid_id_null = " "
+    invalid_id_param_space_medium = "178 7"
     invalid_code_param_special = "%$#^@"
     invalid_id_param_string = "Cas"
     invalid_id_param_minus = "gbo"

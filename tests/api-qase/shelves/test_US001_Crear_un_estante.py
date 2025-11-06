@@ -650,7 +650,6 @@ def test_GCTC027_Verificar_la_creación_de_un_shelves_con_imagen(get_url, get_to
                  )
     assert_response_schema(response.json(), "add_shelves_schema_response.json", "schemas_shelves")
     assert_response_status_code_global(200, response.status_code)
-
     assert response.json()["id"] is not None
     assert response.json()["name"] == payload["name"]
     print(f" Shelves creado correctamente → ID: {response.json()['id']} | Nombre: {response.json()['name']}")

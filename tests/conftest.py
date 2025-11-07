@@ -49,6 +49,20 @@ def setup_delete_shelves_by_id(get_url):
                                     str(shelves_id_to_delete), StaticDataHeaders.default_header.value)
         assert response.status_code in [200, 204]
 
+
+@pytest.fixture(scope="function")
+def setup_delete_books_by_id(get_url):
+    books_id_to_delete = None
+    def registrar_id(books_id):
+        nonlocal books_id_to_delete
+        books_id_to_delete = books_id
+
+    yield registrar_id
+    if books_id_to_delete:
+        response = request_function(StaticDataVerbs.delete.value, get_url, StaticDataModules.books.value,
+                                    str(books_id_to_delete), StaticDataHeaders.default_header.value)
+        assert response.status_code in [200, 204]
+
 """
 Setup para agregar shelves
 """
@@ -83,9 +97,42 @@ def _add_shelves(get_url, **kwargs):
     return response.json()
 
 
+def _add_books(get_url, **kwargs):
+    payload = create_request_shelves_payload_super_modified(**kwargs)
+
+    assert_response_schema(payload, "add_books_schema_request.json", "schemas_books")
+
+    response = request_function(
+        StaticDataVerbs.post.value,
+        get_url,
+        StaticDataModules.books.value,
+        None,
+        generate_headers(StaticDataHeaders.default_header.value),
+        payload
+    )
+
+    log_api_call(
+        method="POST",
+        url=response.url,
+        headers=response.headers,
+        payload=payload,
+        token=TOKEN,
+        response=response
+    )
+
+    assert_response_schema(response.json(), "add_books_schema_response.json", "schemas_books")
+    assert_response_status_code_global(200, response.status_code)
+
+    return response.json()
+
+
 @pytest.fixture(scope="function")
 def setup_add_shelves(get_url):
     return _add_shelves(get_url)
+
+@pytest.fixture(scope="function")
+def setup_add_books(get_url):
+    return _add_books(get_url)
 
 
 @pytest.fixture(scope="function")

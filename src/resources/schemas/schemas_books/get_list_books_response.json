@@ -1,0 +1,85 @@
+{
+    "type": "object",
+    "required": [
+        "data",
+        "total"
+    ],
+    "properties": {
+        "data": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    },
+                    "owned_by": {
+                        "type": "integer"
+                    },
+                    "created_by": {
+                        "type": "integer"
+                    },
+                    "updated_by": {
+                        "type": "integer"
+                    },
+                    "cover": {
+                        "anyOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "id",
+                                    "name",
+                                    "url"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "cover",
+                    "created_at",
+                    "created_by",
+                    "description",
+                    "id",
+                    "name",
+                    "owned_by",
+                    "slug",
+                    "updated_at",
+                    "updated_by"
+                ]
+            }
+        },
+        "total": {
+            "type": "integer"
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description_html": {
+      "type": ["string", "null"]
+    },
+    "default_template_id": {
+      "type": ["integer", "null"]
+    },
+    "tags": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "value"]
+      }
+    }
+  }
+}

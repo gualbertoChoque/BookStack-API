@@ -759,3 +759,117 @@ def test_TC033_Verificar_que_no_permita_crear_un_libro_con_descripcion_basio(get
     assert response.json()["id"] is not None
     assert response.json()["name"] == payload["name"]
     setup_delete_books_by_id(response.json()["id"])
+
+
+# Media
+@pytest.mark.smoke
+@pytest.mark.positive
+@pytest.mark.regression
+def test_TC034_Verificar_la_creación_de_un_libro_con_imagen_svg(get_url, get_token, setup_delete_books_by_id):
+    payload = create_request_shelves_imagen_super_modified(image_name="circle-user-regular.svg")
+    assert_response_schema(payload, "add_books_schema_request.json", "schemas_books")
+    response = request_function(StaticDataVerbs.post.value, get_url, StaticDataModules.books.value, None,
+                                StaticDataHeaders.default_header.value, json.dumps(payload))
+
+    log_api_call(method="POST",
+                 url=response.url,
+                 headers=response.headers,
+                 payload=payload,
+                 token=TOKEN,
+                 response=response
+                 )
+    assert_response_schema(response.json(), "add_books_schema_response.json", "schemas_books")
+    assert_response_status_code_global(200, response.status_code)
+    assert response.json()["id"] is not None
+    assert response.json()["name"] == payload["name"]
+    setup_delete_books_by_id(response.json()["id"])
+
+
+# Media
+@pytest.mark.smoke
+@pytest.mark.positive
+@pytest.mark.regression
+def test_TC035_Verificar_la_creación_de_un_libro_con_imagen_en_formato_png(get_url, get_token, setup_delete_books_by_id):
+    payload = create_request_shelves_imagen_super_modified(image_name="logo.png")
+    assert_response_schema(payload, "add_books_schema_request.json", "schemas_books")
+    response = request_function(StaticDataVerbs.post.value, get_url, StaticDataModules.books.value, None,
+                                StaticDataHeaders.default_header.value, json.dumps(payload))
+
+    log_api_call(method="POST",
+                 url=response.url,
+                 headers=response.headers,
+                 payload=payload,
+                 token=TOKEN,
+                 response=response
+                 )
+    assert_response_schema(response.json(), "add_books_schema_response.json", "schemas_books")
+    assert_response_status_code_global(200, response.status_code)
+    assert response.json()["id"] is not None
+    assert response.json()["name"] == payload["name"]
+    setup_delete_books_by_id(response.json()["id"])
+
+
+# Media
+@pytest.mark.xfail(reason="Deberia devolver un 400 o 404 ya que no deberia aceptar un formato de imagen .pdf en un libro")
+@pytest.mark.smoke
+@pytest.mark.positive
+@pytest.mark.regression
+def test_TC036_Verificar_error_de_un_libro_con_imagen_en_formato_pdf(get_url, get_token, setup_delete_books_by_id):
+    payload = create_request_shelves_imagen_super_modified(image_name="Bug Advocacy.pdf")
+    assert_response_schema(payload, "add_books_schema_request.json", "schemas_books")
+    response = request_function(StaticDataVerbs.post.value, get_url, StaticDataModules.books.value, None,
+                                StaticDataHeaders.default_header.value, json.dumps(payload))
+
+    log_api_call(method="POST",
+                 url=response.url,
+                 headers=response.headers,
+                 payload=payload,
+                 token=TOKEN,
+                 response=response
+                 )
+    assert response.status_code == 404
+    assert "Page Not Found" in response.text
+
+
+# Media
+@pytest.mark.xfail(reason="Deberia devolver un 400 o 404 ya que no deberia aceptar un formato de imagen .gif en un libro")
+@pytest.mark.smoke
+@pytest.mark.positive
+@pytest.mark.regression
+def test_TC037_Verificar_error_de_un_libro_con_imagen_en_formato_gif(get_url, get_token, setup_delete_books_by_id):
+    payload = create_request_shelves_imagen_super_modified(image_name="homer.gif")
+    assert_response_schema(payload, "add_books_schema_request.json", "schemas_books")
+    response = request_function(StaticDataVerbs.post.value, get_url, StaticDataModules.books.value, None,
+                                StaticDataHeaders.default_header.value, json.dumps(payload))
+
+    log_api_call(method="POST",
+                 url=response.url,
+                 headers=response.headers,
+                 payload=payload,
+                 token=TOKEN,
+                 response=response
+                 )
+    assert response.status_code == 404
+    assert "Page Not Found" in response.text
+
+
+# Media
+@pytest.mark.xfail(reason="Deberia devolver un 400 o 404 ya que no deberia aceptar un formato de imagen .zip")
+@pytest.mark.smoke
+@pytest.mark.positive
+@pytest.mark.regression
+def test_TC038_Verificar_error_de_un_libro_con_imagen_en_formato_zip(get_url, get_token, setup_delete_books_by_id):
+    payload = create_request_shelves_imagen_super_modified(image_name="Bug Advocacy.zip")
+    assert_response_schema(payload, "add_books_schema_request.json", "schemas_books")
+    response = request_function(StaticDataVerbs.post.value, get_url, StaticDataModules.books.value, None,
+                                StaticDataHeaders.default_header.value, json.dumps(payload))
+
+    log_api_call(method="POST",
+                 url=response.url,
+                 headers=response.headers,
+                 payload=payload,
+                 token=TOKEN,
+                 response=response
+                 )
+    assert response.status_code == 404
+    assert "Page Not Found" in response.text

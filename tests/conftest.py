@@ -7,7 +7,7 @@ import pytest
 current_dir = os.path.dirname(__file__)
 parent_dir = os.path.dirname(current_dir)
 sys.path.append(parent_dir)
-from src.common.static_data_shelves import StaticDataProject
+from src.common.static_data_shelves import StaticDataShelvesPorId
 from src.resources.payloads.payloads_shelves.payloads_shelves import create_request_shelves_payload_super_modified
 
 from src.headers.headers import generate_headers

@@ -64,7 +64,7 @@ def test_GCTC002_Verificar_que_de_error_al_enviar_una_URL_mal_formada(get_invali
     assert_response_schema(response.json(), "post_shelves_error405.json", "schemas_shelves")
     assert_response_status_code_global(405, response.status_code)
 
-# Alta
+# Media
 @pytest.mark.xfail(reason="Deberia devolver un 400 ya que no deberia crearse un estante con el nombre repetido")
 @pytest.mark.negative
 @pytest.mark.regression
@@ -893,7 +893,7 @@ def test_GCTC037_Verificar_error_de_un_shelves_con_imagen_en_formato_gif(get_url
 
 
 # Media
-@pytest.mark.xfail(reason="Deberia devolver un 400 o 404 ya que no deberia aceptar un formato de imagen .zip")
+#@pytest.mark.xfail(reason="Deberia devolver un 400 o 404 ya que no deberia aceptar un formato de imagen .zip")
 @pytest.mark.smoke
 @pytest.mark.positive
 @pytest.mark.regression

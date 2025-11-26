@@ -319,7 +319,7 @@ def test_TC016_Verificar_que_no_permita_obtener_un_libro_con_valor_negativo_en_e
 
 
 # Media
-@pytest.mark.xfail(reason="Deberia devolver un 404 ya que no existe en id con espacio en el centro")
+@pytest.mark.xfail(reason="Deberia devolver un 404 ya que no existe un libro en id con espacio en el centro")
 @pytest.mark.regression
 @pytest.mark.negative
 def test_TC017_Verificar_que_no_permita_obtener_un_libros_con_espacio_entre_el_id(get_url):
@@ -339,7 +339,7 @@ def test_TC017_Verificar_que_no_permita_obtener_un_libros_con_espacio_entre_el_i
 
 
 # Media
-@pytest.mark.xfail(reason="Deberia devolver un 404 ya que no existe en id con espacio en el centro")
+@pytest.mark.xfail(reason="Deberia devolver un 404 ya que no existe un libro en id con espacio en el centro")
 @pytest.mark.regression
 @pytest.mark.negative
 def test_TC018_Verificar_que_no_permita_obtener_un_libro_con_espacio_delante_el_id(get_url):

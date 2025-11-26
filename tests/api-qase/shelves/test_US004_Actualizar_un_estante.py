@@ -692,7 +692,7 @@ def test_GCTC026_Verificar_la_actualizacion_de_un_shelves_con_imagen(get_url, ge
     setup_delete_shelves_by_id(id_to_update)
 
 
-# Media
+# Alta
 @pytest.mark.xfail(reason="Deberia devolver un 422 ya que no esta permitido tener un estante sin nombre y sin descripcion")
 @pytest.mark.smoke
 @pytest.mark.regression

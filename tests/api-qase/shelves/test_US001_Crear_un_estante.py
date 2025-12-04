@@ -893,7 +893,7 @@ def test_GCTC037_Verificar_error_de_un_shelves_con_imagen_en_formato_gif(get_url
 
 
 # Media
-#@pytest.mark.xfail(reason="Deberia devolver un 400 o 404 ya que no deberia aceptar un formato de imagen .zip")
+@pytest.mark.xfail(reason="Deberia devolver un 400 o 404 ya que no deberia aceptar un formato de imagen .zip")
 @pytest.mark.smoke
 @pytest.mark.positive
 @pytest.mark.regression
